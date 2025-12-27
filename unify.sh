@@ -11,8 +11,8 @@ else
     exit 1
 fi
 
-paste -d',' $COUNT_PATH $RESULTS_PATH > tmp3.csv
-cat tmp3.csv | cut -d, -f1,2,4- > combined.csv
+cat $RESULTS_PATH | cut -d, -f2- > tmp3.csv
+paste -d',' $COUNT_PATH tmp3.csv > combined.csv
 
 rm tmp1.csv
 rm tmp2.csv
