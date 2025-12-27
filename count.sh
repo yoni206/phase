@@ -21,5 +21,5 @@ count_spaces_in_file() {
 
 p=`realpath $1`
 echo -n $p,
-count_spaces_in_file $p | sort | uniq -c | sed -E 's/ +/ /g' | sed -E 's/^ +//; s/ +$//'  | tr '\n' ',' |tr ' ' ':' | sed 's/,$//' 
+count_spaces_in_file $p | sort | uniq -c | sed -E 's/ +/ /g' | sed -E 's/^ +//; s/ +$//'  | tr '\n' ',' |tr ' ' ':' | sed 's/,$/;/' 
 echo

@@ -5,4 +5,4 @@ bms_dir=$script_dir/bms
 cp track_main_2025.uri $bms_dir
 cd $bms_dir
 wget --content-disposition -i track_main_2025.uri
-ls | grep cnf | xargs xz -d
+ls | grep cnf | xargs -t xz -vd
