@@ -7,10 +7,10 @@ See full description below.
 ## Files
 - `*.tar.xz`: solvers source code. Untar and follow compilation instructions to compile.
 - `combined.csv`: Final data. Each line has the following format: `<filename>,<clause-data>,<result>,<time>` where:
-** <filename> is self-explanatory
-** <clause-data> is a comma-separated list where each element has the form `<c:l>`. It reads ``There are `c` clauses with `l` literals each.". If the list terminates with `;`, it means that we have succesfully computed this data fully. Otherwise, the time limit did not allow us to conclude the computation.
-** `<result>` can be sat/unsat/none, the latter means the solver could not solve it.
-** `<time>` is the number of seconds the solver ran.
+  - <filename> is self-explanatory
+  - <clause-data> is a comma-separated list where each element has the form `<c:l>`. It reads ``There are `c` clauses with `l` literals each.". If the list terminates with `;`, it means that we have succesfully computed this data fully. Otherwise, the time limit did not allow us to conclude the computation.
+  - `<result>` can be sat/unsat/none, the latter means the solver could not solve it.
+  - `<time>` is the number of seconds the solver ran.
 - `count.csv` and `results.csv`: raw data used to construct `combined.csv`. The first was computed using `count.sh`. The second using some cluster scripts.
 - `fetch.sh`: a script that creates a `bms` directory and populates it with the 400 benchmarks used in the SAT 2025 competition. For a description of the benchmarks, go [here](https://repositum.tuwien.at/handle/20.500.12708/218424).
 - `track_main_2025.uri`: Helps `fetch.sh` to get the benchmarks. Originates from [this](https://satcompetition.github.io/2025/downloads.html) website.
