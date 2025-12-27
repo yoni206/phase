@@ -1,7 +1,7 @@
 # Phase Transition w/ Varying Clause Size
 
 ## The only important file
-`combined.csv`: summarizes data for the 400 benchmarks used in the SAT 2025 competition. 
+`combined.csv`: summarizes data for the 400 benchmarks used in the [SAT 2025 competition](https://satcompetition.github.io/2025/index.html). 
 See full description below.
 
 ## Files
