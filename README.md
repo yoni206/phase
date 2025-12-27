@@ -1,7 +1,8 @@
 # Phase Transition w/ Varying Clause Size
 
 ## The only important file
-`combined.csv`. See description below.
+`combined.csv`: summarizes data for the 400 benchmarks used in the SAT 2025 competition. 
+See full description below.
 
 ## Files
 - `*.tar.xz`: solvers source code. Untar and follow compilation instructions to compile.
