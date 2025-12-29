@@ -5,7 +5,7 @@
 #include <errno.h>
 
 // Maximum line length buffer (1MB). Increase if dealing with extremely long individual lines.
-#define MAX_LINE_BUFFER 1048576 
+const unsigned long MAX_LINE_BUFFER = 16*1048576 ;
 
 // Structure to hold L:K pairs
 typedef struct {
@@ -73,13 +73,17 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    char buffer[MAX_LINE_BUFFER];
+    char *buffer = NULL;
     int V = 0, C = 0;
     int header_found = 0;
     int clauses_processed = 0;
 
+    if (NULL==(buffer = (char *)malloc(MAX_LINE_BUFFER))) {
+        error_exit("Error: Memory allocation failed.");
+    }
+
     // 2. Parse Header
-    if (fgets(buffer, sizeof(buffer), fp)) {
+    if (fgets(buffer, MAX_LINE_BUFFER, fp)) {
         // Strip newline
         buffer[strcspn(buffer, "\n")] = 0;
 
@@ -118,7 +122,7 @@ int main(int argc, char *argv[]) {
     // Loop continues until EOF or error
     // line_num starts at 2 because header was line 1
     int line_num = 2;
-    while (fgets(buffer, sizeof(buffer), fp)) {
+    while (fgets(buffer, MAX_LINE_BUFFER, fp)) {
         clauses_processed++;
 
         // Validate Line Count Limit
@@ -169,7 +173,7 @@ int main(int argc, char *argv[]) {
 
         // Check if line ends with 0
         if (last_val != 0) {
-            fprintf(stderr, "Error: Line %d does not end with 0.\n", line_num);
+            fprintf(stderr, "Error: Line %d does not end with 0. Read %d tokens\n", line_num, token_count);
             if (filename) fclose(fp);
             return 1;
         }
