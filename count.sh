@@ -20,6 +20,5 @@ count_spaces_in_file() {
 # FYI: out put is: <path>,<#clauses>,<#literals>
 
 p=$(realpath $1)
-echo -n $p, $(head -1 $p),
-count_spaces_in_file $p | sort | uniq -c | sed -E 's/ +/ /g' | sed -E 's/^ +//; s/ +$//' | tr '\n' ',' | tr ' ' ':' | sed 's/,$/;/'
-echo
+echo $p $(./count $p)
+# count_spaces_in_file $p | sort | uniq -c | sed -E 's/ +/ /g' | sed -E 's/^ +//; s/ +$//' | tr '\n' ',' | tr ' ' ':' | sed 's/,$/;/'
