@@ -5,7 +5,7 @@ count_spaces_in_file() {
     local file="$1"
 
     # read and ignore first line
-    IFS= read -r _ < "$file"
+    IFS= read -r _ <"$file"
 
     {
         # skip first line inside the redirection
@@ -14,12 +14,12 @@ count_spaces_in_file() {
             only_spaces="${line//[^ ]/}"
             echo "${#only_spaces}"
         done
-    } < "$file"
+    } <"$file"
 }
 
 # FYI: out put is: <path>,<#clauses>,<#literals>
 
-p=`realpath $1`
-echo -n $p,
-count_spaces_in_file $p | sort | uniq -c | sed -E 's/ +/ /g' | sed -E 's/^ +//; s/ +$//'  | tr '\n' ',' |tr ' ' ':' | sed 's/,$/;/' 
+p=$(realpath $1)
+echo -n $p, $(head -1 $p),
+count_spaces_in_file $p | sort | uniq -c | sed -E 's/ +/ /g' | sed -E 's/^ +//; s/ +$//' | tr '\n' ',' | tr ' ' ':' | sed 's/,$/;/'
 echo
