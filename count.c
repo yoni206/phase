@@ -199,11 +199,11 @@ int main(int argc, char *argv[]) {
     qsort(stats, stats_count, sizeof(StatPair), compare_stats);
 
     // Print V C
-    printf("%d %d", V, C);
+    printf("%d,%d", V, C);
 
     // Print pairs L:K
     for (int i = 0; i < stats_count; i++) {
-        printf(" %d:%d", stats[i].spaces, stats[i].count);
+        printf(",%d:%d", stats[i].spaces, stats[i].count);
     }
     printf("\n");
 
