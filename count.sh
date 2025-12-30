@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
 # Helper Function
 count_spaces_in_file() {
     local file="$1"
@@ -20,5 +22,5 @@ count_spaces_in_file() {
 # FYI: out put is: <path>,<#clauses>,<#literals>
 
 p=$(realpath $1)
-echo $p $(./count $p)
+echo $p $($SCRIPT_DIR/count $p)
 # count_spaces_in_file $p | sort | uniq -c | sed -E 's/ +/ /g' | sed -E 's/^ +//; s/ +$//' | tr '\n' ',' | tr ' ' ':' | sed 's/,$/;/'
